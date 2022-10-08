@@ -15,12 +15,13 @@ on:
 
 jobs:
   build: #inorder for us to run this we need some sort of environment,
+  
     runs-on: ubuntu-latest 
 
     steps:
     - uses: actions/checkout@v2 #it will set up our projects in the environement created aboe
     - name: Set up python 3.9.1
-    - uses: actions/setup-python@v2
+      uses: actions/setup-python@v2
       with:
         python-version: 3.9
 
