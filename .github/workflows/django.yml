@@ -1,1 +1,42 @@
+name: Django Tests
 
+on:
+  push:
+    branches:
+      -master
+
+  pull_request:
+    branche:
+      -master
+#on:
+
+#  schedule
+#  cron: '*15 ****'
+
+job:
+  build: #inorder for us to run this we need some sort of environment,
+    runs-n: ubuntu-latest 
+
+    step:
+    - uses: actions/checkout@v2 #it will set up our projects in the environement created aboe
+    - name: Set up python 3.9.1
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependancies
+       run: 
+        python -m pip install --upgrade pip 
+        pip install -r requirements.txt
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8
+    - name: Coverage report 
+      run: |
+        pip install coverage
+        coverage run manage.py tests
+        coverage report
+    - name: Django Testing
+      run: |
+        python3 manage.py test
