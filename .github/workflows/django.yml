@@ -15,9 +15,9 @@ on:
 
 jobs:
   build: #inorder for us to run this we need some sort of environment,
-    runs-n: ubuntu-latest 
+    runs-on: ubuntu-latest 
 
-    step:
+    steps:
     - uses: actions/checkout@v2 #it will set up our projects in the environement created aboe
     - name: Set up python 3.9.1
     - uses: actions/setup-python@v2
