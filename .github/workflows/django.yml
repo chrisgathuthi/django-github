@@ -13,7 +13,7 @@ on:
 #  schedule
 #  cron: '*15 ****'
 
-job:
+jobs:
   build: #inorder for us to run this we need some sort of environment,
     runs-n: ubuntu-latest 
 
