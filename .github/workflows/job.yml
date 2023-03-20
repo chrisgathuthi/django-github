@@ -4,6 +4,7 @@ jobs:
   postgres-job:
     runs-on: ubuntu-latest
     services:
+      id: ID
       postgres:
         image: postgres
         env:
@@ -16,4 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pg_isready -h localhost -p ${{ job.services.postgres.ports[5432] }}
-      - run: ./run-tests
+      - run: |
+         echo "hello world"
+         ${{job.container}}
+         ${{job.container.network}}
+         &{{job.container.service.ID.ports}}
+      
